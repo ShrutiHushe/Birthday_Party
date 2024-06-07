@@ -1,0 +1,65 @@
+<html>
+<head>
+<title> Birthday App by Shruti </title>
+<style>
+	*{font-size:40px; font-family : Ink Free;}
+	body{background-color: lightpink;}
+	.btn{width:20%;}
+</style>
+
+</head>
+<body>
+<center>
+	<h1>Shruti's BirthDay App</h1>
+	<form onsubmit = "operations()">
+		<input type = "submit" value="Add" class="btn"/>
+		<input type = "submit" value="Remove" class="btn"/>
+		<input type = "submit" value="Show" class="btn"/>
+	</form>
+	<h2 id="msg" />
+
+<script>
+	let names = ["Shruti", "Atharv", "Vinesh"];
+	function operations()
+	{
+		event.preventDefault();
+		let msg = document.getElementById("msg");
+		let ele = document.activeElement.value;
+
+		if(ele == "Add")
+		{	
+			let n = prompt("Enter name ");
+			if (n != null && n != "")
+			{
+				names.push(n);
+				msg.innerHTML =names.join(", ");
+			}
+		}
+		else if (ele == "Remove")
+		{
+			let n = prompt("Enter name to be removed ");
+			if(n != null && n != "")
+			{
+				let pos = names.indexOf(n);
+				if (pos == -1)
+				{
+					alert(n + " not found ");
+				}
+				else
+				{
+					names.splice(pos, 1);
+					alert(n + " removed ");
+				}
+				msg.innerHTML = names.join(", ");
+			}
+		}
+		else if (ele == "Show")
+		{
+			msg.innerHTML = names.join(", ");
+		}
+	}
+</script>
+
+</center>
+</body>
+</html>
